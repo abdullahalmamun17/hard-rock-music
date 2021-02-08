@@ -1,2 +1,2 @@
-# rock-music-station
+# rock music station
 # taste a good quality music
