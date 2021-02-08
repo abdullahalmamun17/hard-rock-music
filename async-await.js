@@ -1,12 +1,18 @@
 const searchSongs = async () => {
     const inputText = document.getElementById('inputText').value
     const url = ` https://api.lyrics.ovh/suggest/${inputText}`
+
     try {
         const res = await fetch(url)
         const data = await res.json()
         displaySongs(data.data)
     } catch (error) {
-        displayErr('oopss! Something went wrong! please try again sometime later. Stay tune!')
+        if (inputText === '') {
+            displayErr('You should search something!')
+        }
+        else {
+            displayErr('oopss! Something went wrong! please try again sometime later. Stay tune!')
+        }
     }
 }
 

@@ -4,7 +4,14 @@ const searchSongs = () => {
     fetch(url)
         .then(res => res.json())
         .then(data => displaySongs(data.data))
-        .catch(err => displayErr('oopss! Something went wrong! please try again sometime later. Stay tune!'))
+        .catch(err => {
+            if(inputText === ''){
+                displayErr('You should search something!')
+            }
+            else{
+                displayErr('oopss! Something went wrong! please try again sometime later. Stay tune!')
+            }
+        })
 
 }
 
