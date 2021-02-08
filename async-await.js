@@ -30,6 +30,7 @@ const displaySongs = songs => {
     const songCard = document.getElementById('song-card')
     songCard.innerHTML = ''
     document.getElementById('lyricsDiv').innerHTML = ''
+    document.getElementById('err-msg').innerHTML = ''
     songs.forEach(song => {
         const songDiv = document.createElement('div')
         songDiv.className = "single-result row align-items-center my-3 p-3"
