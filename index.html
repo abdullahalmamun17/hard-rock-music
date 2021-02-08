@@ -29,13 +29,16 @@
                         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Songs</a>
+                        <a class="nav-link" href="#" onclick="navSongs('top rock song')">Songs</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Artist</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownId">
-                            <a class="dropdown-item" href="#">Metallica</a>
-                            <a class="dropdown-item" href="#">Iron Maiden</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownId" style="border: 0; background-color: transparent;">
+                            <a class="dropdown-item w-25 bg-light rounded-top" href="#" onclick="navSongs('Metallica')">Metallica</a>
+                            <a class="dropdown-item w-25 bg-light" href="#" onclick="navSongs('Iron Maiden')">Iron Maiden</a>
+                            <a class="dropdown-item w-25 bg-light" href="#" onclick="navSongs('Green Day')">Green Day</a>
+                            <a class="dropdown-item w-25 bg-light" href="#" onclick="navSongs('Nirvana')">Nirvana</a>
+                            <a class="dropdown-item w-25 bg-light rounded-bottom" href="#" onclick="navSongs('acdc')">AC/DC</a>
                         </div>
                     </li>
                 </ul>
@@ -46,25 +49,16 @@
             <div class="search-bar col-md-6 mx-auto">
                 <h1 class="text-center">Hard Rock Music Station</h1>
                 <div class="search-box my-5">
-                    <input type="text" class="form-control" placeholder="Enter your artist song name">
-                    <button class="btn btn-success search-btn">Search</button>
+                    <input type="text" class="form-control" placeholder="Enter your artist song name" id="inputText">
+                    <button class="btn btn-success search-btn" id="inputButton" onclick="searchSongs()">Search</button>
                 </div>
             </div>
+            <h2 id="err-msg" class="text-center text-danger fw-bold"></h2>
             <!-- Single Lyrics -->
-            <div class="single-lyrics text-center">
+            <div class="single-lyrics text-center" id="lyricsDiv">
                 
             </div>
-            <div class="search-result col-md-8 mx-auto py-4">
-                <div class="single-result row align-items-center my-3 p-3">
-                    <div class="col-md-9">
-                        <h3 class="lyrics-name">Purple Noon</h3>
-                        <p class="author lead">Album by <span>Washed Out</span></p>
-                    </div>
-                    <div class="col-md-3 text-md-right text-center">
-                        <button class="btn btn-success">Get Lyrics</button>
-                    </div>
-                </div>
-            </div>
+            <div class="search-result col-md-8 mx-auto py-4" id="song-card"></div>
         </main>
     </div>
     <!-- Optional JavaScript -->
@@ -73,6 +67,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
+    <!-- <script src="async-await.js"></script> -->
 
     <!-- Custom Script Here -->
 

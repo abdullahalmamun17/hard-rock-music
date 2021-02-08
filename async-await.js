@@ -1,23 +1,22 @@
-// document.getElementById('inputButton').addEventListener('click', searchSongs)
+// document.getElementById('inputButton').addEventListener('click',searchSongs)
 
 
-const searchSongs = () => {
+const searchSongs = async () => {
     const inputText = document.getElementById('inputText').value
     const url = ` https://api.lyrics.ovh/suggest/${inputText}`
-    fetch(url)
-        .then(res => res.json())
-        .then(data => displaySongs(data.data))
-        .catch(err => displayErr('ooopppsss! Something went wrong! please try again sometime later. Stay tune'))
-
+    const res = await fetch(url)
+    const data = await res.json()
+    displaySongs(data.data)
 }
 
-const navSongs = artist => {
+
+const navSongs = async artist => {
     const url = `https://api.lyrics.ovh/suggest/${artist}`
-    fetch(url)
-        .then(res => res.json())
-        .then(data => displaySongs(data.data))
-        .catch(err => displayErr('ooopppsss! Something went wrong! please try again sometime later. Stay tune'))
+    const res = await fetch(url)
+    const data = await res.json()
+    displaySongs(data.data)
 }
+
 
 const displaySongs = songs => {
     const songCard = document.getElementById('song-card')
@@ -42,20 +41,17 @@ const displaySongs = songs => {
     })
 }
 
-const searchLyrics = (artist, title) => {
+
+const searchLyrics = async (artist, title) => {
     const url = `https://api.lyrics.ovh/v1/${artist}/${title}`
 
-    fetch(url)
-        .then(res => res.json())
-        .then(data => displayLyrics(data))
-        .catch(err => displayErr('Failed to load lyrics. Try again later!'))
+    const res = await fetch(url)
+    const data = await res.json()
+    displayLyrics(data)
 }
+
+
 const displayLyrics = lyrics => {
     const lyricsDiv = document.getElementById('lyricsDiv')
     lyricsDiv.innerText = lyrics.lyrics;
-}
-
-const displayErr = err => {
-    const errMsg = document.getElementById('err-msg')
-    errMsg.innerText = err
 }
