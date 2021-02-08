@@ -1,20 +1,28 @@
-// document.getElementById('inputButton').addEventListener('click',searchSongs)
-
-
 const searchSongs = async () => {
     const inputText = document.getElementById('inputText').value
     const url = ` https://api.lyrics.ovh/suggest/${inputText}`
-    const res = await fetch(url)
-    const data = await res.json()
-    displaySongs(data.data)
+    try {
+        const res = await fetch(url)
+        const data = await res.json()
+        displaySongs(data.data)
+    } catch (error) {
+        displayErr('oopss! Something went wrong! please try again sometime later. Stay tune!')
+    }
 }
+
+
+// document.getElementById('inputButton').addEventListener('click',searchSongs)
 
 
 const navSongs = async artist => {
     const url = `https://api.lyrics.ovh/suggest/${artist}`
-    const res = await fetch(url)
-    const data = await res.json()
-    displaySongs(data.data)
+    try {
+        const res = await fetch(url)
+        const data = await res.json()
+        displaySongs(data.data)
+    } catch (error) {
+        displayErr('oopss! Something went wrong! please try again sometime later. Stay tune!')
+    }
 }
 
 
@@ -45,13 +53,23 @@ const displaySongs = songs => {
 const searchLyrics = async (artist, title) => {
     const url = `https://api.lyrics.ovh/v1/${artist}/${title}`
 
-    const res = await fetch(url)
-    const data = await res.json()
-    displayLyrics(data)
+    try {
+        const res = await fetch(url)
+        const data = await res.json()
+        displayLyrics(data)
+    } catch (error) {
+        displayErr('Failed to load lyrics. Try again later!')
+    }
 }
 
 
 const displayLyrics = lyrics => {
     const lyricsDiv = document.getElementById('lyricsDiv')
     lyricsDiv.innerText = lyrics.lyrics;
+}
+
+
+const displayErr = err => {
+    const errMsg = document.getElementById('err-msg')
+    errMsg.innerText = err
 }
